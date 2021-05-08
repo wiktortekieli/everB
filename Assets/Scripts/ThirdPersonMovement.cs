@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +20,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private bool groundedPlayer;
     private Vector3 velocity;
+
+    public Animator anim;
 
     void Start()
     {
@@ -64,5 +66,8 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        anim.SetFloat("jump", velocity.y);
+        anim.SetFloat("vertical", Mathf.Abs(vertical));
+        anim.SetFloat("horizontal", Mathf.Abs(horizontal));
     }
 }
